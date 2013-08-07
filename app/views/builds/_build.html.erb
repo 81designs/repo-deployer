@@ -1,0 +1,39 @@
+<div class="build clearfix <%= build.status %>">
+  <%= link_to repo_build_path(@repo, build), class: 'build-link', title: build.status.titleize do %>
+    <% case build.status %>
+    <% when 'cloning' %>
+      <i class="icon-cloud-download"></i>
+    <% when 'starting' %>
+      <i class="icon-cog"></i>
+    <% when 'running' %>
+      <i class="icon-refresh icon-spin"></i>
+    <% when 'deploying' %>
+      <i class="icon-cloud-upload"></i>
+    <% when 'passed' %>
+      <i class="icon-ok"></i>
+    <% when 'failed' %>
+      <i class="icon-warning-sign"></i>
+    <% else %>
+      <i class="icon-time"></i>
+    <% end %>
+  <% end %>
+  <span class="repo">
+    <%= link_to @repo.url do %>
+      <strong><%= "#{@repo.owner}/#{@repo.name}" %></strong>
+    <% end %>
+    <strong>:</strong>
+    <%= link_to build.head_commit.message, build.head_commit.url %>
+  </span>
+  <%= link_to build.head_commit.committer.url, class: 'user' do %>
+    <i class="icon-user"></i>
+    <span><%= build.head_commit.committer.name %></span>
+  <% end %>
+  <%= link_to "#{@repo.url}/tree/#{build.branch}", class: 'branch' do %>
+    <i class="icon-code-fork"></i>
+    <span><%= build.branch %></span>
+  <% end %>
+  <span class="time_ago">
+    <i class="icon-upload"></i>
+    <%= time_ago_in_words(build.head_commit.timestamp) %> ago
+  </span>
+</div>

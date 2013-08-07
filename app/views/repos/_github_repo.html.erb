@@ -1,0 +1,6 @@
+<fieldset class="col-lg-4">
+  <legend><%= github_repo[:owner] %></legend>
+  <% github_repo[:repos].each do |repo| %>
+    <p><%= link_to repo.full_name, add_github_repo_repos_path(owner: repo.owner.login, repo: repo.name), method: :post %></p>
+  <% end %>
+</fieldset>

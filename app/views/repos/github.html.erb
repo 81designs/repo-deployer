@@ -1,0 +1,18 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Repo Deployer', root_path %></li>
+  <li class="active">Add GitHub Repo</li>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <p class="alert">Select a GitHub repository you to add to Repo Deployer.</p>
+  </div>
+</div>
+<div class="row">
+  <%= render(partial: 'github_repo', collection: @github_repos) %>
+  <% if @github_repos.empty? %>
+    <div class="col-lg-12">
+      <p>No repositories could be loaded from GitHub.</p>
+    </div>
+  <% end %>
+</div>

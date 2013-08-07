@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: MyString
+  build_id: 1
+  committer_id: 1
+  message: MyString
+  timestamp: 2013-07-31 18:52:38
+  url: MyString
+
+two:
+  id: MyString
+  build_id: 1
+  committer_id: 1
+  message: MyString
+  timestamp: 2013-07-31 18:52:38
+  url: MyString

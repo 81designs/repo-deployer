@@ -1,0 +1,11 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Repo Deployer', root_path %></li>
+  <li><%= link_to "#{@repo.owner}/#{@repo.name}", repo_builds_path(@repo) %></li>
+  <li class="active"><%= @build.head_commit.commit_id[0..9] %></li>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-12">
+    
+  </div>
+</div>

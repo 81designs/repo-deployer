@@ -1,0 +1,56 @@
+<fieldset>
+  <legend>Test Settings</legend>
+  <%= form_for(@repo) do |f| %>
+    <div class="form-group">
+      <%= f.label :test_setup_commands, 'Setup Commands'%>
+      <%= f.text_area :test_setup_commands, class: 'form-control', rows: '5' %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :test_commands, 'Test Commands' %>
+      <%= f.text_area :test_commands, class: 'form-control', rows: '5' %>
+    </div>
+  
+    <div class="form-group">
+      <button class="btn btn-primary">Save Test Settings</button>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+  <legend>Deployment Settings</legend>
+  <p class="alert">
+    You have not set up an app for deployment.<br />
+    <%= link_to 'Sign in to Heroku', '/auth/heroku' %>
+    to select an app.
+  </p>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label for="branch" class="col-lg-6 control-label">Deploy Branch:</label>
+      <div class="col-lg-6">
+        <input type="text" class="form-control" id="branch" placeholder="Branch name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="migrate-db" class="col-lg-6 control-label">Migrate database?</label>
+      <div class="col-lg-6">
+        <div class="checkbox">
+          <input type="checkbox" id="migrate-db">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default">Save Deployment Settings</button>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Remove Repository</legend>
+  <p>
+    Remove <strong><%= "#{@repo.owner}/#{@repo.name}" %></strong> to stop testing and deploying any new builds.
+  </p>
+  <p>
+    <a href="#" class="btn btn-danger">Remove Repository</a>
+  </p>
+</fieldset>

@@ -1,0 +1,233 @@
+// Place all the styles related to the builds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'compass/css3/opacity';
+@import 'compass/css3/transform';
+@import 'mixins/animation';
+@import 'mixins/breakpoint';
+
+fieldset legend .repo-name {
+  color: #aaa;
+}
+
+.builds {
+  margin-bottom: 2em;
+  
+  a {
+    color: #777;
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.builds .build {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  height: 80px;
+  margin-bottom: 1em;
+  
+  a:hover {
+    text-decoration: none;
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  span.repo {
+    color: #777;
+    display: block;
+    margin-left: 1em;
+    overflow: hidden;
+    padding: 1em 0.5em 0.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 78%;
+    
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.builds .build {
+  a.user {
+    display: block;
+    float: left;
+    margin-left: 1em;
+    margin-right: 2em;
+    padding: 0.5em 0.5em 1em;
+  }
+  
+  a.branch {
+    display: block;
+    float: left;
+    padding: 0.5em 0.5em 1em;
+  }
+  
+  span.time_ago {
+    color: #777;
+    display: block;
+    float: right;
+    margin-right: 1em;
+    padding: 0.5em 0.5em 1em;
+  }
+}
+
+.builds .build {
+  a.build-link {
+    background-color: #0088cc;
+    border-left: 1px solid #ddd;
+    color: #fff;
+    float: right;
+    font-size: 1.5em;
+    height: 100%;
+    margin-left: 10px;
+    text-align: center;
+    width: 50px;
+    
+    i {
+      display: block;
+      margin-top: 28px;
+    }
+    
+    &:hover {
+      background-color: darken(#0088cc, 10%);
+      color: #fff;
+    }
+  }
+}
+
+.builds .build {
+  &.failed {
+    a.build-link {
+      background-color: #b94a48;
+      &:hover {
+        background-color: darken(#b94a48, 10%);
+      }
+    }
+  }
+  
+  &.passed {
+    a.build-link {
+      background-color: #468847;
+      &:hover {
+        background-color: darken(#468847, 10%);
+      }
+    }
+  }
+}
+
+.builds .build {
+  &.running {
+    a.build-link {
+      font-size: 1.2em;
+      i {
+        color: rgba(255, 255, 255, 0.9);
+        margin-top: 30px;
+      }
+      &:hover i {
+        color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+  
+  &.waiting {
+    a.build-link {
+      background-color: #eee;
+      color: #ccc;
+      &:hover {
+        background-color: darken(#eee, 5%);
+        color: darken(#ccc, 5%);
+      }
+    }
+  }
+}
+
+@include keyframes(icon-pulse) {
+  0% {
+    @include opacity(0.6);
+  }
+  40% {
+    @include opacity(1);
+  }
+  60% {
+    @include opacity(1);
+  }
+  100% {
+    @include opacity(0.6);
+  }
+}
+
+@include keyframes(icon-spin) {
+  0% {
+    @include rotate(0deg);
+  }
+  100% {
+    @include rotate(359deg);
+  }
+}
+
+.builds .build {
+  &.cloning,
+  &.deploying {
+    a.build-link i {
+      @include animation(icon-pulse 3s infinite linear);
+    }
+  }
+  &.starting {
+    a.build-link i {
+      @include animation(icon-spin 5s infinite linear);
+    }
+  }
+}
+
+.builds .build {
+  @include breakpoint(mobile) {
+    a.user, a.branch {
+      display: none;
+    }
+    span.time_ago {
+      display: block;
+      float: none;
+      margin: 0;
+      text-align: center;
+    }
+    .repo a {
+      display: block;
+      margin: 0;
+      text-align: center;
+    }
+    .repo > strong,
+    .repo a + strong + a {
+      display: none;
+    }
+  }
+}
+
+.repo-settings {
+  fieldset {
+    margin-bottom: 2em;
+  }
+  textarea {
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 12px;
+  }
+}
+
+//#top, #bottom {
+//  color: #0088cc;
+//  outline: none;
+//  float: right;
+//  margin-right: 1em;
+//  text-decoration: none;
+//}
+//#top:hover, #bottom:hover {
+//  color: #005580;
+//}
+//#bottom {
+//  margin-top: -2em;
+//}
+//hr {
+//  border-top: 1px solid #ddd;
+//}

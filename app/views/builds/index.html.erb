@@ -1,0 +1,27 @@
+<% content_for :breadcrumbs do %>
+  <li><%= link_to 'Repo Deployer', root_path %></li>
+  <li class="active"><%= "#{@repo.owner}/#{@repo.name}" %></li>
+<% end %>
+
+<div class="row">
+  
+  <fieldset class="col-sm-8 col-lg-8">
+    <legend>
+      Builds
+      <span class="repo-name">
+        <%= "#{@repo.owner}/#{@repo.name}" %>
+      </span>
+    </legend>
+    <div class="builds">
+      <%= render(partial: @builds) %>
+      <% if @builds.empty? %>
+        <p class="alert">There are no builds for <strong><%= "#{@repo.owner}/#{@repo.name}" %></strong>.</p>
+      <% end %>
+    </div>
+  </fieldset>
+  
+  <div class="col-sm-4 col-lg-4 repo-settings">
+    <%= render(partial: 'repos/settings') %>
+  </div>
+  
+</div>

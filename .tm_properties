@@ -1,0 +1,7 @@
+includeFiles = "{$includeFiles,.env}"
+excludeFiles = "{$excludeFiles,*.sqlite3}"
+excludeInFileChooser = "{$excludeInFileChooser,log,public,tmp}"
+excludeInFolderSearch = "{$excludeInFolderSearch,log,public,tmp}"
+
+softTabs = true
+tabSize = 2

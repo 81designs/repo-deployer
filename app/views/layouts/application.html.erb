@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repo Deployer</title>
+    
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-lg-9">
+          <ul class="breadcrumb">
+            <%= yield :breadcrumbs %>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-3">
+          <ul class="breadcrumb current-user">
+            <% if current_user %>
+              <li><%= current_user.name %></li>
+              <li><%= link_to 'Logout', '/logout' %></li>
+            <% else %>
+              <li><%= link_to 'Log in with GitHub', '/auth/github' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      
+      <% if alert %>
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="alert alert-error"><%= alert %></p>
+          </div>
+        </div>
+      <% end %>
+      
+      <% if notice %>
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="alert alert-success"><%= notice %></p>
+          </div>
+        </div>
+      <% end %>
+      
+      <% if current_user %>
+        <%= yield %>
+      <% else %>    
+        <div class="row">
+          <div class="col-lg-12">
+            <p class="alert">
+              Please <%= link_to 'Log in with GitHub', '/auth/github' %> to continue.
+            </p>
+          </div>
+        </div>
+      <% end %>
+      
+    </div>
+  </body>
+</html>
