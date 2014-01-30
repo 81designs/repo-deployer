@@ -1,4 +1,4 @@
-includeFiles = "{$includeFiles,.env}"
+includeFiles = "{$includeFiles,.env,.gitignore,.foreman}"
 excludeFiles = "{$excludeFiles,*.sqlite3}"
 excludeInFileChooser = "{$excludeInFileChooser,log,public,tmp}"
 excludeInFolderSearch = "{$excludeInFolderSearch,log,public,tmp}"
