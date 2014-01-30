@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130805003659) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "builds", force: true do |t|
     t.integer  "repo_id"
     t.integer  "head_commit_id"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20130805003659) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "repos", force: true do |t|
     t.integer  "user_id"
