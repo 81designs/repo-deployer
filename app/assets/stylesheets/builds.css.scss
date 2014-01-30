@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bourbon";
-@import "mixins/animation";
 @import "mixins/breakpoint";
 
 fieldset legend .repo-name {
@@ -145,25 +144,25 @@ fieldset legend .repo-name {
 
 @include keyframes(icon-pulse) {
   0% {
-    @include opacity(0.6);
+    opacity: 0.6;
   }
   40% {
-    @include opacity(1);
+    opacity: 1;
   }
   60% {
-    @include opacity(1);
+    opacity: 1;
   }
   100% {
-    @include opacity(0.6);
+    opacity: 0.6;
   }
 }
 
 @include keyframes(icon-spin) {
   0% {
-    @include rotate(0deg);
+    @include transform(rotate(0deg));
   }
   100% {
-    @include rotate(359deg);
+    @include transform(rotate(359deg));
   }
 }
 
