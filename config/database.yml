@@ -1,14 +1,14 @@
 development:
   adapter: postgresql
-  database: quicksprout_development
+  database: repo_deployer_development
   host: localhost
   
 test:
   adapter: postgresql
-  database: quicksprout_test
+  database: repo_deployer_test
   host: localhost
   
 production:
   adapter: postgresql
-  database: quicksprout_production
+  database: repo_deployer_production
   host: localhost
