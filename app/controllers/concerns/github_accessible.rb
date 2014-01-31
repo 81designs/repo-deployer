@@ -3,7 +3,7 @@ module GithubAccessible
   def add_github_repo
     github_repo = github_client.repos.get(params[:owner], params[:repo])
     
-    @repo = Repo.find_by_user_id_and_provider_and_provider_id(current_user.id, 'github', github_repo.id)
+    @repo = Repo.find_by_user_id_and_provider_and_provider_id(current_user.id, 'github', github_repo.id.to_s)
     
     if @repo
       redirect_to repo_builds_path(@repo), alert: 'GitHub repo was previously added already.'
@@ -12,7 +12,7 @@ module GithubAccessible
         name: github_repo.name,
         owner: github_repo.owner.login, 
         provider: 'github', 
-        provider_id: github_repo.id, 
+        provider_id: github_repo.id.to_s, 
         url: github_repo.html_url,
         clone_url: github_repo.clone_url.gsub("https://", "https://#{current_user.token}:x-oauth-basic@")
       )
