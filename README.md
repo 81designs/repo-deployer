@@ -1,5 +1,7 @@
 # Repo Deployer
 
+[![Code Climate](https://codeclimate.com/github/81designs/repo-deployer.png)](https://codeclimate.com/github/81designs/repo-deployer)
+
 An automated test and deployment server built on Rails 4.
 
 ## Running Locally
